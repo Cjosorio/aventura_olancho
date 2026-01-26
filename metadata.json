@@ -1,0 +1,7 @@
+{
+  "name": "Aventura Olancho",
+  "description": "Sitio web oficial de turismo para Olancho, Honduras. Descubre los atractivos, cultura y aventuras en Campamento, Juticalpa, Catacamas, Santa María del Real y Dulce Nombre de Culmí.",
+  "requestFramePermissions": [
+    "microphone"
+  ]
+}
