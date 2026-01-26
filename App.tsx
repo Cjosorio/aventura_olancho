@@ -23,13 +23,14 @@ const App: React.FC = () => {
   const footerRef = useRef<HTMLElement>(null);
 
   // CONFIGURACIÓN DE IMÁGENES: Ahora con las 5 fotos de la carpeta principal/
-  const carouselImages = [
-    "/principal/01.jpg",
-    "/principal/02.jpeg",
-    "/principal/03.jpeg",
-    "/principal/04.jpeg",
-    "/principal/05.jpg"
-  ];
+ const carouselImages = [
+  `${import.meta.env.BASE_URL}principal/01.jpg`,
+  `${import.meta.env.BASE_URL}principal/02.jpeg`,
+  `${import.meta.env.BASE_URL}principal/03.jpeg`,
+  `${import.meta.env.BASE_URL}principal/04.jpeg`,
+  `${import.meta.env.BASE_URL}principal/05.jpg`
+];
+
 
   useEffect(() => {
     const handleScroll = () => {
@@ -91,11 +92,12 @@ const App: React.FC = () => {
   {(scrolled || currentView !== 'home') ? (
     <>
       <div className="w-15 h-15flex items-center justify-center ">
-        <img
-          src="logo4.png"
-          alt="Aventura Olancho"
-          className="w-20 h-20 object-contain"
-        />
+      <img
+  src={`${import.meta.env.BASE_URL}principal/logo4.png`}
+  alt="Aventura Olancho"
+  className="w-20 h-20 object-contain"
+/>
+
       </div>
 
       <span className="font-bold text-slate-900 tracking-tighter uppercase text-xs">
