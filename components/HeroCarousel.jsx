@@ -1,9 +1,10 @@
 import { useEffect, useState } from "react";
 
 const images = [
+  "principal/Principal 01.jpeg",
   "principal/08.jpeg",
-  "principal/14.jpeg",
   "principal/03.jpeg",
+  
 ];
 
 export default function HeroCarousel() {

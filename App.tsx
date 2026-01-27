@@ -140,7 +140,7 @@ const App: React.FC = () => {
       <div className="max-w-7xl mx-auto px-6 grid grid-cols-1 md:grid-cols-4 gap-12 mb-16">
         <div className="md:col-span-2">
           <Logo className="h-20 mb-6" />
-          <p className="text-slate-400 max-w-sm mb-8 leading-relaxed">Empresa líder en turismo regional en Olancho, Honduras. Comprometidos con la excelencia y el desarrollo local.</p>
+          <p className="text-slate-400 max-w-sm mb-8 leading-relaxed">Promover el desarrollo turístico sostenible del departamento de Olancho mediante la creación, difusión y comercialización de experiencias turísticas.</p>
           <div className="flex gap-4">
             <a href="#" className="w-10 h-10 rounded-full bg-slate-800 flex items-center justify-center hover:bg-orange-500 transition-colors"><Facebook className="w-5 h-5" /></a>
             <a href="#" className="w-10 h-10 rounded-full bg-slate-800 flex items-center justify-center hover:bg-orange-500 transition-colors"><Instagram className="w-5 h-5" /></a>
@@ -149,7 +149,7 @@ const App: React.FC = () => {
         </div>
         <div>
           <h4 className="font-bold text-lg mb-6">Municipios</h4>
-          <ul className="space-y-4 text-slate-400">
+          <ul className="space-y-1 text-slate-400">
             {MUNICIPALITIES.slice(0, 5).map(m => (
               <li key={m.id}><button onClick={() => handleMunicipalityClick(m.id)} className="hover:text-white transition-colors">{m.name}</button></li>
             ))}
@@ -157,7 +157,7 @@ const App: React.FC = () => {
         </div>
         <div>
           <h4 className="font-bold text-lg mb-6">Contacto</h4>
-          <ul className="space-y-4 text-slate-400">
+          <ul className="space-y-1 text-slate-400">
             <li className="flex items-start gap-2"><MapPin className="w-5 h-5 text-green-500" /> Catacamas, Olancho, Honduras</li>
             <li>aventuraolancho@gmail.com</li>
             <li>+504 9289-4639</li>
@@ -218,7 +218,7 @@ const App: React.FC = () => {
                   <div className="order-2 lg:order-1">
                     <span className="text-orange-500 font-bold tracking-widest text-xs uppercase mb-6 block">Bienvenidos a la aventura</span>
                     <h2 className="text-5xl md:text-6xl font-black text-slate-900 mb-8 font-brand leading-tight">¿Por qué visitar <span className="text-green-600">Olancho?</span></h2>
-                    <p className="text-xl text-slate-600 mb-10 leading-relaxed font-medium">Olancho es el corazón natural de Honduras, un destino donde la aventura, la cultura y la tradición se encuentran en cada rincón. Es el departamento más grande del país y uno de los más diversos.</p>
+                    <p className="text-xl text-slate-600 mb-10 leading-relaxed font-medium">Olancho es el corazón natural de Honduras, un destino donde la aventura, la cultura y la tradición se encuentran en cada rincón. Es el departamento más grande del país y uno de los más diversos, ofreciendo paisajes que van desde imponentes montañas y ríos cristalinos hasta extensas tierras ganaderas y agrícolas que reflejan el espíritu trabajador de su gente.</p>
                     <div className="flex flex-col sm:flex-row gap-4">
                       <button onClick={() => navigateTo("municipalities")} className="bg-slate-900 text-white px-8 py-5 rounded-2xl font-black text-xs uppercase tracking-widest flex items-center justify-center gap-3 shadow-xl hover:bg-orange-500 transition-all group">
                         Explorar Destinos <Compass className="w-5 h-5 text-orange-500 group-hover:text-white transition-colors" />
@@ -309,37 +309,104 @@ const App: React.FC = () => {
         )}
 
         {/* VISTA: QUIÉNES SOMOS */}
-        {currentView === 'about' && (
-          <section className="pt-32 pb-24 bg-white min-h-screen">
-            <div className="max-w-7xl mx-auto px-6 pl-12 md:pl-64">
-              <div className="mb-16">
-                <span className="text-orange-500 font-bold uppercase tracking-widest text-xs mb-2 block">Nuestra Historia</span>
-                <h2 className="text-5xl font-black text-slate-900 mb-4 font-brand">¿Quiénes Somos?</h2>
-                <p className="text-slate-500 max-w-3xl text-lg leading-relaxed">
-                  Aventura Olancho es una promotora de turismo creada en el año 2016 por Alex Rojas, con el sueño de mostrar al mundo la riqueza inexplorada de nuestro departamento.
-                </p>
-              </div>
-              <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 mb-24">
-                <div className="space-y-8">
-                  <div className="p-8 bg-slate-50 rounded-[2.5rem] border border-slate-100">
-                    <Target className="w-12 h-12 text-orange-500 mb-6" />
-                    <h3 className="text-2xl font-bold text-slate-900 mb-4">Nuestra Misión</h3>
-                    <p className="text-slate-600 leading-relaxed">Promover el desarrollo turístico sostenible del departamento de Olancho resaltando su cultura y bellezas naturales.</p>
-                  </div>
-                  <div className="p-8 bg-slate-900 rounded-[2.5rem] text-white">
-                    <ShieldCheck className="w-12 h-12 text-green-500 mb-6" />
-                    <h3 className="text-2xl font-bold mb-4">Nuestro Compromiso</h3>
-                    <p className="text-slate-400 leading-relaxed">Ofrecer experiencias auténticas y seguras en cada rincón del departamento.</p>
-                  </div>
-                </div>
-                <div className="relative aspect-square rounded-[3rem] overflow-hidden shadow-2xl border-8 border-white">
-                  <img src="https://images.unsplash.com/photo-1522202176988-66273c2fd55f?auto=format&fit=crop&q=80&w=800" alt="Team" className="w-full h-full object-cover" />
-                </div>
-              </div>
-            </div>
-          </section>
-        )}
+       {currentView === 'about' && (
+  <section className="pt-32 pb-24 bg-white min-h-screen">
+    <div className="max-w-7xl mx-auto px-6 pl-12 md:pl-64">
+      <div className="mb-16">
+        <span className="text-orange-500 font-bold uppercase tracking-widest text-xs mb-2 block">
+          Nuestra Historia
+        </span>
+        <h2 className="text-5xl font-black text-slate-900 mb-4 font-brand">
+          ¿Quiénes Somos?
+        </h2>
+        <p className="text-slate-500 max-w-3xl text-lg leading-relaxed">
+          Aventura Olancho es una promotora de turismo creada en el año 2016 por Alex Rojas,
+          con el firme compromiso de impulsar, posicionar y proyectar los destinos turísticos
+          y la riqueza cultural del departamento de Olancho, el más grande de Honduras.
+          <br /><br />
+          Nacemos como una iniciativa local con visión nacional, enfocada en mostrar la identidad
+          auténtica de Olancho a través de experiencias turísticas responsables, culturales y de
+          aventura, conectando a visitantes con la naturaleza, la historia y la gente de nuestra
+          región. Aventura Olancho forma parte de Grupo VALFER.
+        </p>
+      </div>
 
+      <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 mb-24">
+        <div className="space-y-8">
+          <div className="p-8 bg-slate-50 rounded-[2.5rem] border border-slate-100">
+            <Target className="w-12 h-12 text-orange-500 mb-6" />
+            <h3 className="text-2xl font-bold text-slate-900 mb-4">Nuestra Misión</h3>
+            <p className="text-slate-600 leading-relaxed">
+              Promover el desarrollo turístico sostenible del departamento de Olancho mediante
+              la creación, difusión y comercialización de experiencias turísticas que destaquen
+              su cultura, tradiciones, recursos naturales y potencial económico, fortaleciendo
+              a las comunidades locales.
+            </p>
+          </div>
+          <div className="p-8 bg-slate-50 rounded-[2.5rem] border border-slate-100">
+            <Users className="w-12 h-12 text-green-600 mb-6" />
+            <h3 className="text-2xl font-bold text-slate-900 mb-4">Nuestra Visión</h3>
+            <p className="text-slate-600 leading-relaxed">
+              Ser la promotora de turismo líder del oriente de Honduras, reconocida a nivel
+              nacional e internacional por la calidad de sus experiencias, el respeto por la
+              identidad cultural y su contribución al desarrollo turístico de Olancho.
+            </p>
+          </div>
+        </div>
+
+        <div className="relative">
+          <div className="aspect-square rounded-[3rem] overflow-hidden shadow-2xl">
+            <img
+              src="https://images.unsplash.com/photo-1522202176988-66273c2fd55f?auto=format&fit=crop&q=80&w=800"
+              alt="Team working"
+              className="w-full h-full object-cover"
+            />
+          </div>
+          <div className="absolute -bottom-10 -left-10 bg-slate-900 text-white p-10 rounded-[2rem] shadow-xl max-w-xs hidden md:block">
+            <ShieldCheck className="w-10 h-10 text-orange-400 mb-4" />
+            <p className="font-bold text-lg">Compromiso Total</p>
+            <p className="text-sm text-slate-400 mt-2">Garantizamos la seguridad y satisfacción en cada una de nuestras rutas guiadas.</p>
+          </div>
+        </div>
+      </div>
+
+      <div className="grid grid-cols-1 md:grid-cols-2 gap-12 mb-24">
+        <div className="p-10 bg-slate-50 rounded-[3rem] border border-slate-100">
+          <h3 className="text-3xl font-black text-slate-900 mb-6">Objetivo Institucional</h3>
+          <p className="text-slate-600 leading-relaxed">
+            Promover los principales destinos turísticos y expresiones culturales del
+            departamento de Olancho, tomando como base estratégica los cinco municipios
+            más importantes del departamento, desde donde se articulan rutas, actividades
+            y productos turísticos que integran naturaleza, cultura, agricultura, ganadería
+            y turismo de aventura.
+          </p>
+        </div>
+        <div className="p-10 bg-slate-50 rounded-[3rem] border border-slate-100">
+          <h3 className="text-3xl font-black text-slate-900 mb-6">Qué Promovemos</h3>
+          <ul className="space-y-3 text-slate-600 list-disc list-inside">
+            <li>Turismo cultural y comunitario</li>
+            <li>Turismo de naturaleza y aventura</li>
+            <li>Rutas agrícolas y ganaderas</li>
+            <li>Patrimonio histórico y tradiciones locales</li>
+            <li>Experiencias auténticas y sostenibles</li>
+          </ul>
+        </div>
+      </div>
+
+      <div className="bg-slate-900 rounded-[3rem] p-12 text-white">
+        <div className="flex flex-col md:flex-row items-center justify-between gap-8">
+          <div className="max-w-xl">
+            <h3 className="text-3xl font-black mb-4 font-brand">Únete a nuestra aventura</h3>
+            <p className="text-slate-400 text-lg leading-relaxed">Estamos constantemente buscando nuevas formas de innovar en el turismo regional. Si eres un operador local o simplemente amas Olancho, ¡queremos escucharte!</p>
+          </div>
+          <button className="bg-orange-500 text-white px-10 py-4 rounded-full font-black text-xs uppercase tracking-widest hover:bg-orange-600 transition-all">
+            Contáctanos
+          </button>
+        </div>
+      </div>
+    </div>
+  </section>
+)}
         {/* VISTA: PLANIFICADOR */}
         {currentView === 'trip-planner' && <TripPlanner onCancel={() => navigateTo('home')} />}
       </main>
