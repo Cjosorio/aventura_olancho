@@ -15,7 +15,7 @@ const MunicipalityCard: React.FC<MunicipalityCardProps> = ({ municipality, onCli
       className="group relative h-80 overflow-hidden rounded-2xl cursor-pointer shadow-lg hover:shadow-2xl transition-all duration-500"
     >
       <img 
-        src={municipality.heroImage} 
+        src={municipality.cardImage} 
         alt={municipality.name} 
         className="absolute inset-0 w-full h-full object-cover transition-transform duration-700 group-hover:scale-110"
       />

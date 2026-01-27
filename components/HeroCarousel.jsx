@@ -2,7 +2,7 @@ import { useEffect, useState } from "react";
 
 const images = [
   "principal/08.jpeg",
-  "principal/09.jpeg",
+  "principal/14.jpeg",
   "principal/03.jpeg",
 ];
 
