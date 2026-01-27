@@ -11,6 +11,7 @@ import HeroCarousel from "./components/HeroCarousel";
 import { 
   Mountain, Compass, MapPin, Search, Menu, X, Facebook, Instagram, Twitter, 
   Calendar, ChevronRight, Home, ArrowRight, Plane, Zap, Star, Users, 
+<<<<<<< HEAD
   Target, ShieldCheck, ShoppingBag, Tag
 } from 'lucide-react';
 
@@ -61,6 +62,13 @@ const PRODUCTS = [
     image: 'https://images.unsplash.com/photo-1553062407-98eeb64c6a62?q=80&w=800&auto=format&fit=crop'
   }
 ];
+=======
+  Target, ShieldCheck, ShoppingBag 
+} from 'lucide-react';
+
+// Actualizado para incluir 'shop'
+type View = 'home' | 'municipalities' | 'activities' | 'trip-planner' | 'about' | 'shop';
+>>>>>>> 00c73beef2aba956759f61c643c2807fe0eeb1cc
 
 const App: React.FC = () => {
   const [currentView, setCurrentView] = useState<View>('home');
@@ -148,7 +156,14 @@ const App: React.FC = () => {
           <button onClick={() => navigateTo('home')} className={`${(scrolled || currentView !== 'home') ? 'text-slate-600 hover:text-orange-500' : 'text-white hover:text-green-300'} transition-colors ${currentView === 'home' && (scrolled || currentView !== 'home') ? 'text-orange-500' : ''}`}>Inicio</button>
           <button onClick={() => navigateTo('municipalities')} className={`${(scrolled || currentView !== 'home') ? 'text-slate-600 hover:text-orange-500' : 'text-white hover:text-green-300'} transition-colors ${currentView === 'municipalities' ? 'text-orange-500' : ''}`}>Destinos</button>
           <button onClick={() => navigateTo('activities')} className={`${(scrolled || currentView !== 'home') ? 'text-slate-600 hover:text-orange-500' : 'text-white hover:text-green-300'} transition-colors ${currentView === 'activities' ? 'text-orange-500' : ''}`}>Actividades</button>
+<<<<<<< HEAD
           <button onClick={() => navigateTo('shop')} className={`${(scrolled || currentView !== 'home') ? 'text-slate-600 hover:text-orange-500' : 'text-white hover:text-green-300'} transition-colors ${currentView === 'shop' ? 'text-orange-500' : ''}`}>Tienda</button>
+=======
+          
+          {/* Botón Tienda Desktop */}
+          <button onClick={() => navigateTo('shop')} className={`${(scrolled || currentView !== 'home') ? 'text-slate-600 hover:text-orange-500' : 'text-white hover:text-green-300'} transition-colors ${currentView === 'shop' ? 'text-orange-500' : ''}`}>Tienda</button>
+          
+>>>>>>> 00c73beef2aba956759f61c643c2807fe0eeb1cc
           <button onClick={() => navigateTo('about')} className={`${(scrolled || currentView !== 'home') ? 'text-slate-600 hover:text-orange-500' : 'text-white hover:text-green-300'} transition-colors ${currentView === 'about' ? 'text-orange-500' : ''}`}>Quiénes Somos</button>
           <button onClick={() => navigateTo('trip-planner')} className={`bg-orange-500 text-white px-6 py-2 rounded-full hover:bg-orange-600 transition-all transform hover:scale-105 flex items-center gap-2`}>
             <Plane className="w-4 h-4" /> Planear Viaje
@@ -165,9 +180,18 @@ const App: React.FC = () => {
           <button onClick={() => navigateTo('home')} className="text-left font-bold text-slate-900 py-2 border-b border-slate-50">Inicio</button>
           <button onClick={() => navigateTo('municipalities')} className="text-left font-bold text-slate-900 py-2 border-b border-slate-50">Destinos</button>
           <button onClick={() => navigateTo('activities')} className="text-left font-bold text-slate-900 py-2 border-b border-slate-50">Actividades</button>
+<<<<<<< HEAD
           <button onClick={() => navigateTo('shop')} className="text-left font-bold text-slate-900 py-2 border-b border-slate-50 flex items-center justify-between">
             Tienda <ShoppingBag className="w-5 h-5 text-orange-500" />
           </button>
+=======
+          
+          {/* Botón Tienda Mobile */}
+          <button onClick={() => navigateTo('shop')} className="text-left font-bold text-slate-900 py-2 border-b border-slate-50 flex items-center justify-between">
+            Tienda <ShoppingBag className="w-5 h-5 text-orange-500" />
+          </button>
+          
+>>>>>>> 00c73beef2aba956759f61c643c2807fe0eeb1cc
           <button onClick={() => navigateTo('about')} className="text-left font-bold text-slate-900 py-2 border-b border-slate-50">Quiénes Somos</button>
           <button onClick={() => navigateTo('trip-planner')} className="bg-orange-500 text-white px-6 py-3 rounded-xl font-bold flex items-center justify-center gap-2">
             <Plane className="w-5 h-5" /> Planear Viaje
@@ -245,6 +269,10 @@ const App: React.FC = () => {
     <div className="min-h-screen bg-slate-50 selection:bg-orange-200 overflow-x-hidden">
       {renderNavbar()}
 
+<<<<<<< HEAD
+=======
+      {/* PUBLICIDAD VERTICAL FIJA */}
+>>>>>>> 00c73beef2aba956759f61c643c2807fe0eeb1cc
       <aside className={`fixed left-4 top-1/2 -translate-y-1/2 w-32 md:w-48 z-40 transition-all duration-500 ${showAd ? 'opacity-100 translate-x-0' : 'opacity-0 -translate-x-full pointer-events-none'}`}>
         <div className="relative aspect-[1/2] rounded-[2rem] overflow-hidden shadow-2xl group">
           <img src="R.jpg" alt="Publicidad Vertical" className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700" />
@@ -259,6 +287,7 @@ const App: React.FC = () => {
         {currentView === 'home' && (
           <>
             <header className="relative h-screen flex flex-col items-center justify-center overflow-hidden">
+<<<<<<< HEAD
   {/* El carrusel con el efecto de fondo desenfocado que hicimos */}
   <HeroCarousel />
   
@@ -347,6 +376,57 @@ const App: React.FC = () => {
     </div>
   </div>
 </section>
+=======
+              <HeroCarousel />
+              <div className="relative z-10 text-center px-6 max-w-4xl flex flex-col items-center">
+                <div className="mb-12 animate-fade-in-up">
+                  <Logo className="md:h-64 lg:h-80 drop-shadow-[0_0px_0px_rgba(0,0,0,0.2)]" />
+                </div>
+                <div className="flex flex-wrap justify-center gap-6 animate-fade-in-up" style={{ animationDelay: "0.2s" }}>
+                  <button onClick={() => navigateTo("municipalities")} className="bg-white text-slate-900 px-10 py-5 rounded-full font-black text-sm uppercase tracking-widest hover:bg-slate-100 transition-all flex items-center gap-3 shadow-2xl">
+                    Explorar Destinos <Compass className="w-5 h-5 text-orange-500" />
+                  </button>
+                  <button onClick={() => navigateTo("trip-planner")} className="bg-orange-500 text-white px-10 py-5 rounded-full font-black text-sm uppercase tracking-widest hover:bg-orange-600 transition-all flex items-center gap-3 shadow-2xl">
+                    Planear Mi Viaje <Plane className="w-5 h-5" />
+                  </button>
+                </div>
+              </div>
+              <div className="absolute bottom-10 animate-bounce z-10">
+                <div className="w-[2px] h-16 bg-gradient-to-b from-white to-transparent rounded-full opacity-60"></div>
+              </div>
+            </header>
+
+            <section className="py-24 bg-white relative">
+              <div className="max-w-7xl mx-auto px-6 pl-12 md:pl-64 transition-all">
+                <div className="grid grid-cols-1 lg:grid-cols-2 gap-20 items-center">
+                  <div>
+                    <span className="text-orange-500 font-bold tracking-widest text-xs uppercase mb-6 block">Bienvenidos</span>
+                    <h2 className="text-5xl md:text-6xl font-black text-slate-900 mb-8 font-brand leading-tight">
+                      ¿Por qué<br/> visitar <span className="text-green-600">Olancho?</span>
+                    </h2>
+                    <p className="text-xl text-slate-600 mb-10 leading-relaxed font-medium">
+                      Olancho es el corazón natural de Honduras, un destino donde la aventura, la cultura y la tradición se encuentran en cada rincón...
+                    </p>
+                    <button onClick={() => navigateTo('municipalities')} className="bg-slate-900 text-white px-8 py-4 rounded-2xl font-black text-xs uppercase tracking-widest flex items-center gap-3">
+                       Comenzar ahora <ArrowRight className="w-5 h-5 text-orange-400" />
+                    </button>
+                  </div>
+                  <div className="relative group">
+                    <div className="aspect-[4/5] rounded-[3rem] overflow-hidden shadow-2xl border-8 border-white relative bg-slate-100">
+                      {carouselImages.map((img, index) => (
+                        <img key={index} src={img} className={`absolute inset-0 w-full h-full object-cover transition-opacity duration-1000 ease-in-out ${activeSlide === index ? 'opacity-100' : 'opacity-0'}`} alt={`Olancho Slide ${index + 1}`} />
+                      ))}
+                      <div className="absolute bottom-6 left-0 right-0 flex justify-center gap-2 z-10">
+                        {carouselImages.map((_, index) => (
+                          <button key={index} onClick={() => setActiveSlide(index)} className={`w-2 h-2 rounded-full transition-all duration-300 ${activeSlide === index ? 'bg-orange-500 w-6' : 'bg-white/50'}`} />
+                        ))}
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </section>
+>>>>>>> 00c73beef2aba956759f61c643c2807fe0eeb1cc
           </>
         )}
 
@@ -384,6 +464,7 @@ const App: React.FC = () => {
           </section>
         )}
 
+<<<<<<< HEAD
         {/* VISTA DE TIENDA CON PRODUCTOS */}
         {currentView === 'shop' && (
           <section className="pt-32 pb-24 bg-slate-50 min-h-screen">
@@ -430,6 +511,26 @@ const App: React.FC = () => {
                 <button className="bg-white text-orange-500 px-10 py-4 rounded-full font-black text-xs uppercase tracking-widest hover:bg-slate-100 transition-all">
                   Consultar por WhatsApp
                 </button>
+=======
+        {/* VISTA DE TIENDA AGREGADA */}
+        {currentView === 'shop' && (
+          <section className="pt-32 pb-24 bg-white min-h-screen">
+            <div className="max-w-7xl mx-auto px-6">
+              <div className="mb-16 text-center">
+                <span className="text-orange-500 font-bold uppercase tracking-widest text-xs mb-2 block">Productos Locales</span>
+                <h2 className="text-5xl font-black text-slate-900 mb-4 font-brand">Tienda Aventura Olancho</h2>
+                <p className="text-slate-500 max-w-2xl mx-auto text-lg">Lleva un pedacito de nuestra tierra contigo. Café artesanal, artesanías y equipo de aventura.</p>
+              </div>
+              <div className="grid grid-cols-1 md:grid-cols-3 gap-10">
+                <div className="bg-slate-50 p-12 rounded-[3rem] border border-slate-100 text-center flex flex-col items-center">
+                   <div className="w-24 h-24 bg-orange-100 rounded-full flex items-center justify-center mb-6">
+                      <ShoppingBag className="w-10 h-10 text-orange-500" />
+                   </div>
+                   <h3 className="text-2xl font-bold mb-2">Próximamente</h3>
+                   <p className="text-slate-500 mb-8">Estamos seleccionando lo mejor de Olancho para ti.</p>
+                   <button onClick={() => navigateTo('home')} className="text-orange-500 font-bold hover:underline">Volver al inicio</button>
+                </div>
+>>>>>>> 00c73beef2aba956759f61c643c2807fe0eeb1cc
               </div>
             </div>
           </section>
