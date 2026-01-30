@@ -113,7 +113,7 @@ const App: React.FC = () => {
         <div className="cursor-pointer flex items-center gap-2" onClick={() => navigateTo('home')}>
           {(scrolled || currentView !== 'home') ? (
             <>
-              <img src={`${baseUrl}principal/logo4.png`} alt="Aventura Olancho" className="w-16 h-16 object-contain" />
+              <img src={`${baseUrl}principal/logo5.png`} alt="Aventura Olancho" className="w-16 h-16 object-contain" />
               <span className="font-bold text-slate-900 tracking-tighter uppercase text-xs">AVENTURA OLANCHO</span>
             </>
           ) : (
