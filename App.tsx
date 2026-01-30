@@ -12,11 +12,18 @@ import HeroCarousel from "./components/HeroCarousel";
 import { 
   Mountain, Compass, MapPin, Search, Menu, X, Facebook, Instagram, Twitter, 
   Calendar, ChevronRight, Home, ArrowRight, Plane, Zap, Star, Users, 
-  Target, ShieldCheck, ShoppingBag, Tag, ExternalLink
+  Target, ShieldCheck, ShoppingBag, Tag, ExternalLink, Globe, LayoutGrid, Layers
 } from 'lucide-react';
 
 // --- CONFIGURACIÓN DE TIPOS Y CONSTANTES ---
 type View = 'home' | 'municipalities' | 'activities' | 'trip-planner' | 'about' | 'shop';
+
+const REMAINING_NAMES = [
+  "Concordia", "El Rosario", "Esquipulas del Norte", "Gualaco", "Guata", 
+  "Guayape", "Guarizama", "Jano", "La Unión", "Mangulile", "Manto", 
+  "Patuca", "Salamá", "San Esteban", "San Francisco de Becerra", 
+  "San Francisco de La Paz", "Silca", "Yocón"
+];
 
 const PRODUCTS = [
   { id: 1, name: 'Gorra Aventura Olancho', price: 'L 350', category: 'Accesorios', image: 'https://images.unsplash.com/photo-1588850561407-ed78c282e89b?q=80&w=800&auto=format&fit=crop' },
@@ -35,6 +42,7 @@ const App: React.FC = () => {
   const [showAd, setShowAd] = useState(false);
   const [showFullscreenAd, setShowFullscreenAd] = useState(true);
   const [activeSlide, setActiveSlide] = useState(0);
+  const [searchTerm, setSearchTerm] = useState('');
   const footerRef = useRef<HTMLElement>(null);
 
   const baseUrl = (import.meta as any).env?.BASE_URL || '';
@@ -92,6 +100,10 @@ const App: React.FC = () => {
 
   const allEvents = MUNICIPALITIES.flatMap(m => 
     m.events.map(e => ({ ...e, municipalityName: m.name, muniId: m.id, color: m.color }))
+  );
+
+  const filteredRemaining = REMAINING_NAMES.filter(name => 
+    name.toLowerCase().includes(searchTerm.toLowerCase())
   );
 
   // --- COMPONENTES DE INTERFAZ ---
@@ -290,13 +302,88 @@ const App: React.FC = () => {
           <section className="pt-32 pb-24 bg-white min-h-screen">
             <div className="max-w-7xl mx-auto px-6">
               <div className="mb-16">
-                <h2 className="text-5xl font-black text-slate-900 mb-4 font-brand">Nuestros Municipios</h2>
-                <p className="text-slate-500 max-w-2xl text-lg">Descubre la identidad única de cada destino en Olancho.</p>
+                <span className="text-orange-500 font-bold uppercase tracking-widest text-xs mb-2 block">Explora el departamento</span>
+                <h2 className="text-5xl font-black text-slate-900 mb-4 font-brand">Destinos Principales</h2>
+                <p className="text-slate-500 max-w-2xl text-lg">Inicia tu viaje por los cinco pilares del turismo olanchano.</p>
               </div>
-              <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-10">
+              
+              <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-10 mb-32">
                 {MUNICIPALITIES.map(m => (
                   <MunicipalityCard key={m.id} municipality={m} onClick={handleMunicipalityClick} />
                 ))}
+              </div>
+
+              {/* ATLAS DE OLANCHO: SECCIÓN VER MÁS */}
+              <div className="relative bg-slate-900 rounded-[4rem] p-12 md:p-20 overflow-hidden shadow-3xl">
+                {/* Background Decorations */}
+                <div className="absolute top-0 right-0 w-96 h-96 bg-orange-500/10 blur-[100px] rounded-full"></div>
+                <div className="absolute bottom-0 left-0 w-96 h-96 bg-green-500/10 blur-[100px] rounded-full"></div>
+                
+                <div className="relative z-10">
+                  <div className="flex flex-col lg:flex-row justify-between items-end gap-10 mb-16">
+                    <div className="max-w-2xl">
+                      <div className="flex items-center gap-3 mb-6">
+                        <Globe className="w-8 h-8 text-orange-500 animate-pulse" />
+                        <span className="text-orange-400 font-black uppercase tracking-[0.4em] text-xs">Directorio Completo</span>
+                      </div>
+                      <h2 className="text-4xl md:text-6xl font-black text-white font-brand mb-6 leading-tight">Descubre <span className="text-orange-500">Olancho</span></h2>
+                      <p className="text-slate-400 text-lg leading-relaxed">Más allá de las ciudades principales, el departamento esconde municipios llenos de misticismo, naturaleza virgen y leyendas ancestrales. Encuentra tu próxima aventura en nuestro buscador interactivo.</p>
+                    </div>
+                    
+                    <div className="w-full lg:w-96">
+                      <div className="relative group">
+                        <Search className="absolute left-6 top-1/2 -translate-y-1/2 text-slate-500 group-focus-within:text-orange-500 transition-colors" />
+                        <input 
+                          type="text"
+                          placeholder="Buscar municipio..."
+                          value={searchTerm}
+                          onChange={(e) => setSearchTerm(e.target.value)}
+                          className="w-full bg-white/5 border border-white/10 text-white rounded-3xl py-5 pl-16 pr-6 focus:outline-none focus:ring-4 focus:ring-orange-500/20 backdrop-blur-xl transition-all placeholder:text-slate-600"
+                        />
+                      </div>
+                    </div>
+                  </div>
+
+                  <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 xl:grid-cols-6 gap-6">
+                    {filteredRemaining.length > 0 ? filteredRemaining.map((name, idx) => (
+                      <div 
+                        key={idx}
+                        className="group relative bg-white/5 hover:bg-white/10 border border-white/10 hover:border-orange-500/50 rounded-3xl p-6 transition-all duration-500 cursor-pointer backdrop-blur-md overflow-hidden"
+                      >
+                        <div className="absolute top-0 left-0 w-full h-1 bg-gradient-to-r from-transparent via-orange-500 to-transparent opacity-0 group-hover:opacity-100 transition-opacity"></div>
+                        <div className="w-12 h-12 rounded-2xl bg-slate-800 flex items-center justify-center text-white mb-4 group-hover:scale-110 group-hover:bg-orange-500 transition-all duration-500">
+                          <MapPin className="w-6 h-6" />
+                        </div>
+                        <h4 className="text-white font-bold text-sm tracking-wide mb-2 group-hover:text-orange-400 transition-colors">{name}</h4>
+                        <div className="flex items-center gap-2 text-[10px] font-black uppercase tracking-widest text-slate-500 opacity-0 group-hover:opacity-100 translate-y-2 group-hover:translate-y-0 transition-all duration-500">
+                          Descubrir <ArrowRight className="w-3 h-3" />
+                        </div>
+                        
+                        {/* Glass Decorative Element */}
+                        <div className="absolute -bottom-4 -right-4 w-16 h-16 bg-white/5 rounded-full blur-xl group-hover:bg-orange-500/20 transition-all"></div>
+                      </div>
+                    )) : (
+                      <div className="col-span-full py-20 text-center">
+                        <Layers className="w-16 h-16 text-slate-700 mx-auto mb-6 opacity-20" />
+                        <p className="text-slate-500 font-bold uppercase tracking-widest text-sm">No se encontraron municipios con ese nombre</p>
+                      </div>
+                    )}
+                  </div>
+
+                  <div className="mt-20 pt-10 border-t border-white/5 flex flex-col md:flex-row justify-between items-center gap-8">
+                    <div className="flex items-center gap-6">
+                      <div className="flex -space-x-4">
+                        {[1, 2, 3, 4].map(i => (
+                          <div key={i} className="w-12 h-12 rounded-full border-4 border-slate-900 bg-slate-800 flex items-center justify-center">
+                            <Users className="w-5 h-5 text-slate-500" />
+                          </div>
+                        ))}
+                      </div>
+           
+                    </div>
+                  
+                  </div>
+                </div>
               </div>
             </div>
           </section>
@@ -341,6 +428,7 @@ const App: React.FC = () => {
                       <div className="flex items-center justify-between mt-6">
                         <span className="text-2xl font-black text-orange-500">{product.price}</span>
                         <button className="bg-slate-900 text-white p-4 rounded-2xl hover:bg-orange-500 transition-colors">
+                          {/* Corrected icon name from Shopping_Bag to ShoppingBag */}
                           <ShoppingBag className="w-5 h-5" />
                         </button>
                       </div>
@@ -364,7 +452,7 @@ const App: React.FC = () => {
                   con el firme compromiso de impulsar, posicionar y proyectar los destinos turísticos
                   y la riqueza cultural del departamento de Olancho, el más grande de Honduras.
                   <br /><br />
-                  Nacemos como una iniciativa local con visión nacional, enfocada en mostrar la identidad
+                  Nacemos como una iniciativa local con visión nacional, enfocada en mostrar la identity
                   auténtica de Olancho a través de experiencias turísticas responsables, culturales y de
                   aventura, conectando a visitantes con la naturaleza, la historia y la gente de nuestra
                   región. Aventura Olancho forma parte de Grupo VALFER.
@@ -453,6 +541,10 @@ const App: React.FC = () => {
           to { opacity: 1; }
         }
         .animate-fade-in { animation: fade-in 0.5s ease-out forwards; }
+        
+        .shadow-3xl {
+          box-shadow: 0 50px 100px -20px rgba(0, 0, 0, 0.5);
+        }
       `}</style>
     </div>
   );
