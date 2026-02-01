@@ -162,23 +162,11 @@ export const MUNICIPALITIES: Municipality[] = [
         rating: 4,
         description: 'Confort y modernidad para grupos grandes.',
         address: 'Entrada principal de la ciudad.',
-        imageUrl: 'https://images.unsplash.com/photo-1455587734955-081b22074882?auto=format&fit=crop&q=80&w=800',
+        imageUrl: 'https://images.unsplash.com/photo-1455587734955-081b22074882?auto=format&fit=crop&q=80&w=1200',
         phone: '+504 2799-2233',
         whatsapp: '+504 9900-3344',
         amenities: ['Piscina', 'Bar', 'Centro de Negocios'],
         rooms: [{ name: 'Triple Junior', price: 1800, capacity: '3 Personas', description: 'Tres camas individuales.' }]
-      },
-      { 
-        name: 'Eco-Hotel Agalta', 
-        type: 'Ecológico', 
-        rating: 3,
-        description: 'Rodeado de jardines botánicos locales.',
-        address: 'KM 2 hacia la UNAG.',
-        imageUrl: 'https://images.unsplash.com/photo-1469474968028-56623f02e42e?auto=format&fit=crop&q=80&w=800',
-        phone: '+504 2799-0011',
-        whatsapp: '+504 8844-5511',
-        amenities: ['Senderos', 'Observación de aves'],
-        rooms: [{ name: 'Cabaña Forest', price: 1300, capacity: '2 Personas', description: 'Ventilación natural y terraza.' }]
       }
     ],
     restaurants: [
@@ -191,25 +179,6 @@ export const MUNICIPALITIES: Municipality[] = [
         phone: '+504 2799-5500',
         whatsapp: '+504 3322-1100',
         menu: [{ name: 'T-Bone Steak', description: 'Corte de exportación.', price: 550, category: 'Plato Fuerte' }]
-      },
-      { 
-        name: 'Pizzería La Cueva', 
-        specialty: 'Pizzas Artesanales',
-        description: 'Horno de leña y ambiente rústico único.',
-        address: 'Barrio El Centro, Catacamas.',
-        imageUrl: 'https://images.unsplash.com/photo-1513104890138-7c749659a591?auto=format&fit=crop&q=80&w=800',
-        phone: '+504 2799-6677',
-        whatsapp: '+504 9466-2211',
-        menu: [{ name: 'Pizza Olanchana', description: 'Con chorizo y queso local.', price: 290, category: 'Plato Fuerte' }]
-      },
-      { 
-        name: 'Restaurante Talgua', 
-        specialty: 'Comida Buffet',
-        description: 'Rapidez y calidad para turistas en ruta.',
-        address: 'Calle hacia las Cuevas de Talgua.',
-        imageUrl: 'https://images.unsplash.com/photo-1467003909585-2f8a72700288?auto=format&fit=crop&q=80&w=800',
-        phone: '+504 2799-8811',
-        menu: [{ name: 'Almuerzo Ejecutivo', description: 'Incluye refresco natural.', price: 155, category: 'Plato Fuerte' }]
       }
     ],
     events: [{ name: 'Feria de San Francisco', date: 'Octubre', description: 'Festivales culturales y jaripeos.' }],
@@ -224,7 +193,7 @@ export const MUNICIPALITIES: Municipality[] = [
     cardImage: 'principal/mini Santa Maria del Real.jpeg',
     heroImage: 'principal/santa-maria.jpg',
     mapPos: { x: 52, y: 55 },
-    attractions: [{ id: 's1', name: 'Iglesia Colonial', description: 'Parroquia histórica.', imageUrl: 'https://images.unsplash.com/photo-1518709268805-4e9042af9f23?auto=format&fit=crop&q=80&w=800' }],
+    attractions: [{ id: 's1', name: 'Iglesia Colonial', description: 'Parroquia histórica con valiosas imágenes coloniales.', imageUrl: 'https://images.unsplash.com/photo-1518709268805-4e9042af9f23?auto=format&fit=crop&q=80&w=800' }],
     activities: [{ name: 'Turismo Religioso', icon: 'Church' }],
     accommodations: [
       { 
@@ -263,7 +232,7 @@ export const MUNICIPALITIES: Municipality[] = [
     cardImage: 'principal/mini culmi.jpeg',
     heroImage: 'principal/culmi.jpg',
     mapPos: { x: 78, y: 35 },
-    attractions: [{ id: 'cu1', name: 'Aldeas Pech', description: 'Encuentro cultural directo.', imageUrl: 'https://images.unsplash.com/photo-1544911845-1f34a3eb46b1?auto=format&fit=crop&q=80&w=800' }],
+    attractions: [{ id: 'cu1', name: 'Aldeas Pech', description: 'Encuentro cultural directo con las comunidades ancestrales.', imageUrl: 'https://images.unsplash.com/photo-1544911845-1f34a3eb46b1?auto=format&fit=crop&q=80&w=800' }],
     activities: [{ name: 'Etnoturismo', icon: 'Users' }],
     accommodations: [
       { 
@@ -289,7 +258,263 @@ export const MUNICIPALITIES: Municipality[] = [
         menu: [{ name: 'Sopa de Gallina India', description: 'Receta ancestral.', price: 210, category: 'Plato Fuerte' }]
       }
     ],
-    events: [{ name: 'Encuentro Intercultural Pech', date: 'Mayo', description: 'Festivales de danza.' }],
+    events: [{ name: 'Encuentro Intercultural Pech', date: 'Mayo', description: 'Festivales de danza ancestral.' }],
     visitorInfo: 'Uso de guías obligatorio.'
+  },
+  {
+    id: 'concordia',
+    name: 'Concordia',
+    slogan: 'Paz Occidental',
+    color: '#16a34a',
+    cardImage: 'https://images.unsplash.com/photo-1500382017468-9049fed747ef?auto=format&fit=crop&q=80&w=800',
+    heroImage: 'https://images.unsplash.com/photo-1500382017468-9049fed747ef?auto=format&fit=crop&q=80&w=1200',
+    mapPos: { x: 12, y: 70 },
+    description: 'Concordia es un pequeño pero vibrante municipio en el occidente de Olancho. Su geografía montañosa le otorga un clima envidiable y vistas espectaculares hacia los valles vecinos. Es un lugar donde el tiempo parece detenerse, ideal para el descanso y la conexión con la naturaleza.',
+    attractions: [{ id: 'co1', name: 'Mirador del Valle', description: 'Vista ininterrumpida de las cordilleras que rodean el municipio.', imageUrl: 'https://images.unsplash.com/photo-1464822759023-fed622ff2c3b?auto=format&fit=crop&q=80&w=800' }],
+    activities: [{ name: 'Caminata de Montaña', icon: 'Mountain' }],
+    accommodations: [], restaurants: [], events: [], visitorInfo: 'Lugar tranquilo y seguro para familias.'
+  },
+  {
+    id: 'el-rosario',
+    name: 'El Rosario',
+    slogan: 'Aroma de Café',
+    color: '#854d0e',
+    cardImage: 'https://images.unsplash.com/photo-1495107334309-fcf20504fa5f?auto=format&fit=crop&q=80&w=800',
+    heroImage: 'https://images.unsplash.com/photo-1495107334309-fcf20504fa5f?auto=format&fit=crop&q=80&w=1200',
+    mapPos: { x: 15, y: 55 },
+    description: 'El Rosario es tierra de caficultores. Ubicado en las zonas altas, su economía y cultura giran en torno al "grano de oro". Las fincas de café ofrecen recorridos donde los visitantes pueden aprender sobre la cosecha y el procesamiento de uno de los mejores cafés de la región.',
+    attractions: [{ id: 'er1', name: 'Fincas de Café', description: 'Tour de procesos del café desde la planta a la taza.', imageUrl: 'https://images.unsplash.com/photo-1524350300060-305312788e0b?auto=format&fit=crop&q=80&w=800' }],
+    activities: [{ name: 'Agroturismo', icon: 'Sprout' }],
+    accommodations: [], restaurants: [], events: [], visitorInfo: 'No olvide comprar café local antes de irse.'
+  },
+  {
+    id: 'esquipulas-norte',
+    name: 'Esquipulas del Norte',
+    slogan: 'Frontera Norte',
+    color: '#2563eb',
+    cardImage: 'https://images.unsplash.com/photo-1519011985187-444d62641929?auto=format&fit=crop&q=80&w=800',
+    heroImage: 'https://images.unsplash.com/photo-1519011985187-444d62641929?auto=format&fit=crop&q=80&w=1200',
+    mapPos: { x: 30, y: 15 },
+    description: 'Esquipulas del Norte es un municipio remoto de gran belleza natural, limitando con las majestuosas montañas de la Sierra de Agalta. Su aislamiento ha preservado sus bosques y ríos en un estado casi virgen, ofreciendo un paraíso para el turismo de aventura extremo.',
+    attractions: [{ id: 'en1', name: 'Río Mame', description: 'Río de aguas frías y cristalinas ideal para refrescarse.', imageUrl: 'https://images.unsplash.com/photo-1437482012494-097970ba3900?auto=format&fit=crop&q=80&w=800' }],
+    activities: [{ name: 'Exploración Forestal', icon: 'Tree' }],
+    accommodations: [], restaurants: [], events: [], visitorInfo: 'Se recomienda vehículo 4x4 para el acceso.'
+  },
+  {
+    id: 'gualaco',
+    name: 'Gualaco',
+    slogan: 'Cascadas de Cristal',
+    color: '#059669',
+    cardImage: 'https://images.unsplash.com/photo-1501785888041-af3ef285b470?auto=format&fit=crop&q=80&w=800',
+    heroImage: 'https://images.unsplash.com/photo-1501785888041-af3ef285b470?auto=format&fit=crop&q=80&w=1200',
+    mapPos: { x: 45, y: 35 },
+    description: 'Gualaco es un santuario del ecoturismo. Con cascadas inexploradas, densos bosques nublados y cuevas con ríos subterráneos, es el destino predilecto para los amantes de la naturaleza que buscan salirse de los senderos trillados.',
+    attractions: [{ id: 'gu1', name: 'Cueva de Susmay', description: 'Una impresionante cueva con un río subterráneo que se puede navegar en balsas pequeñas.', imageUrl: 'https://images.unsplash.com/photo-1502726299822-6f583f972e02?auto=format&fit=crop&q=80&w=800' }],
+    activities: [{ name: 'Espeleología', icon: 'Flashlight' }, { name: 'Ecoturismo', icon: 'Waves' }],
+    accommodations: [], restaurants: [], events: [], visitorInfo: 'Clima húmedo y lluvioso, traiga equipo adecuado.'
+  },
+  {
+    id: 'guata',
+    name: 'Guata',
+    slogan: 'Rincón de Montaña',
+    color: '#4d7c0f',
+    cardImage: 'https://images.unsplash.com/photo-1441974231531-c6227db76b6e?auto=format&fit=crop&q=80&w=800',
+    heroImage: 'https://images.unsplash.com/photo-1441974231531-c6227db76b6e?auto=format&fit=crop&q=80&w=1200',
+    mapPos: { x: 35, y: 25 },
+    description: 'Ubicado en las entrañas de la sierra, Guata es un municipio que respira paz. Sus bosques de coníferas proporcionan un clima fresco y revitalizante, perfecto para retiros de fin de semana y observación de fauna local.',
+    attractions: [{ id: 'gt1', name: 'Sendero Los Pinos', description: 'Camino boscoso ideal para avistamiento de aves.', imageUrl: 'https://images.unsplash.com/photo-1448375240586-882707db888b?auto=format&fit=crop&q=80&w=800' }],
+    activities: [{ name: 'Senderismo', icon: 'Footprints' }],
+    accommodations: [], restaurants: [], events: [], visitorInfo: ''
+  },
+  {
+    id: 'guayape',
+    name: 'Guayape',
+    slogan: 'Valles Fértiles',
+    color: '#65a30d',
+    cardImage: 'https://images.unsplash.com/photo-1500673922987-e212871fec22?auto=format&fit=crop&q=80&w=800',
+    heroImage: 'https://images.unsplash.com/photo-1500673922987-e212871fec22?auto=format&fit=crop&q=80&w=1200',
+    mapPos: { x: 25, y: 50 },
+    description: 'Guayape es el corazón agrícola del departamento. Sus extensos valles son testimonio del arduo trabajo de su gente, produciendo gran parte de los granos básicos que alimentan a la región. El turismo aquí se centra en la vida rural y las ferias agrícolas.',
+    attractions: [{ id: 'gy1', name: 'Río Guayape', description: 'Legendario río conocido históricamente por sus pepitas de oro.', imageUrl: 'https://images.unsplash.com/photo-1437482012494-097970ba3900?auto=format&fit=crop&q=80&w=800' }],
+    activities: [{ name: 'Pesca Artesanal', icon: 'Waves' }],
+    accommodations: [], restaurants: [], events: [], visitorInfo: ''
+  },
+  {
+    id: 'guarizama',
+    name: 'Guarizama',
+    slogan: 'Pueblo de Piedra',
+    color: '#7c3aed',
+    cardImage: 'https://images.unsplash.com/photo-1518709268805-4e9042af9f23?auto=format&fit=crop&q=80&w=800',
+    heroImage: 'https://images.unsplash.com/photo-1518709268805-4e9042af9f23?auto=format&fit=crop&q=80&w=1200',
+    mapPos: { x: 48, y: 65 },
+    description: 'Guarizama destaca por su arquitectura rústica y sus calles empedradas que evocan la Honduras de antaño. Es un municipio de tradiciones vivas, donde la artesanía y la alfarería siguen siendo parte del día a día.',
+    attractions: [{ id: 'gz1', name: 'Taller de Alfarería', description: 'Visite a las familias que mantienen viva la técnica del barro rojo.', imageUrl: 'https://images.unsplash.com/photo-1565191999001-551c187427bb?auto=format&fit=crop&q=80&w=800' }],
+    activities: [{ name: 'Taller de Barro', icon: 'Palette' }],
+    accommodations: [], restaurants: [], events: [], visitorInfo: ''
+  },
+  {
+    id: 'jano',
+    name: 'Jano',
+    slogan: 'Alturas de Olancho',
+    color: '#0284c7',
+    cardImage: 'https://images.unsplash.com/photo-1472214103451-9374bd1c798e?auto=format&fit=crop&q=80&w=800',
+    heroImage: 'https://images.unsplash.com/photo-1472214103451-9374bd1c798e?auto=format&fit=crop&q=80&w=1200',
+    mapPos: { x: 40, y: 20 },
+    description: 'Jano es un balcón hacia el norte del departamento. Situado en una de las zonas más altas, ofrece panoramas de nubes y montañas que quitan el aliento. Es el lugar perfecto para quienes buscan soledad y paisajes de postal.',
+    attractions: [{ id: 'ja1', name: 'Mirador de Jano', description: 'Punto más alto del pueblo con visibilidad de 360 grados.', imageUrl: 'https://images.unsplash.com/photo-1464822759023-fed622ff2c3b?auto=format&fit=crop&q=80&w=800' }],
+    activities: [{ name: 'Fotografía de Paisaje', icon: 'Camera' }],
+    accommodations: [], restaurants: [], events: [], visitorInfo: ''
+  },
+  {
+    id: 'la-union',
+    name: 'La Unión',
+    slogan: 'Cruce de Caminos',
+    color: '#3b82f6',
+    cardImage: 'https://images.unsplash.com/photo-1447752875215-b2761acb3c5d?auto=format&fit=crop&q=80&w=800',
+    heroImage: 'https://images.unsplash.com/photo-1447752875215-b2761acb3c5d?auto=format&fit=crop&q=80&w=1200',
+    mapPos: { x: 32, y: 40 },
+    description: 'La Unión actúa como un punto de convergencia en el norte de Olancho. Su actividad comercial y su hospitalidad lo hacen un lugar de parada obligatoria para los viajeros que exploran la ruta hacia la costa norte.',
+    attractions: [{ id: 'lu1', name: 'Parque Central', description: 'Corazón de la vida social del municipio con kioscos tradicionales.', imageUrl: 'https://images.unsplash.com/photo-1548625361-1250003b1458?auto=format&fit=crop&q=80&w=800' }],
+    activities: [{ name: 'Caminata Urbana', icon: 'Map' }],
+    accommodations: [], restaurants: [], events: [], visitorInfo: ''
+  },
+  {
+    id: 'mangulile',
+    name: 'Mangulile',
+    slogan: 'Legado Ganadero',
+    color: '#ca8a04',
+    cardImage: 'https://images.unsplash.com/photo-1500382017468-9049fed747ef?auto=format&fit=crop&q=80&w=800',
+    heroImage: 'https://images.unsplash.com/photo-1500382017468-9049fed747ef?auto=format&fit=crop&q=80&w=1200',
+    mapPos: { x: 22, y: 30 },
+    description: 'Mangulile es tierra de hombres y mujeres de campo. Su herencia ganadera se refleja en sus amplias praderas y en la calidad de sus productos lácteos. Las ferias hípicas aquí son de las más apasionadas del departamento.',
+    attractions: [{ id: 'ma1', name: 'Haciendas Tradicionales', description: 'Visite haciendas centenarias y aprenda sobre el manejo del ganado.', imageUrl: 'https://images.unsplash.com/photo-1500382017468-9049fed747ef?auto=format&fit=crop&q=80&w=800' }],
+    activities: [{ name: 'Cabalgatas', icon: 'Users' }],
+    accommodations: [], restaurants: [], events: [], visitorInfo: ''
+  },
+  {
+    id: 'manto',
+    name: 'Manto',
+    slogan: 'Antigua Metrópolis',
+    color: '#9333ea',
+    cardImage: 'https://images.unsplash.com/photo-1511497584788-876760111969?auto=format&fit=crop&q=80&w=800',
+    heroImage: 'https://images.unsplash.com/photo-1511497584788-876760111969?auto=format&fit=crop&q=80&w=1200',
+    mapPos: { x: 42, y: 45 },
+    description: 'Manto fue en su día la capital del departamento. Sus calles guardan los ecos de esa gloria colonial con casonas de adobe y teja. Es un destino obligado para historiadores y amantes de la arquitectura colonial hondureña.',
+    attractions: [{ id: 'mn1', name: 'Ruinas de la Catedral Antigua', description: 'Vestigios de la importancia religiosa de Manto en la colonia.', imageUrl: 'https://images.unsplash.com/photo-1518709268805-4e9042af9f23?auto=format&fit=crop&q=80&w=800' }],
+    activities: [{ name: 'Recorrido Histórico', icon: 'Book' }],
+    accommodations: [], restaurants: [], events: [], visitorInfo: ''
+  },
+  {
+    id: 'patuca',
+    name: 'Patuca',
+    slogan: 'Poder de las Aguas',
+    color: '#0891b2',
+    cardImage: 'https://images.unsplash.com/photo-1437482012494-097970ba3900?auto=format&fit=crop&q=80&w=800',
+    heroImage: 'https://images.unsplash.com/photo-1437482012494-097970ba3900?auto=format&fit=crop&q=80&w=1200',
+    mapPos: { x: 75, y: 75 },
+    description: 'Patuca es el nombre del gigante que atraviesa este municipio. Hogar de uno de los ríos más caudalosos de Centroamérica, ofrece un espectáculo de fuerza natural inigualable y es vital para la energía del país.',
+    attractions: [{ id: 'pa1', name: 'Represa Patuca III', description: 'Obra de ingeniería moderna integrada en el paisaje fluvial.', imageUrl: 'https://images.unsplash.com/photo-1437482012494-097970ba3900?auto=format&fit=crop&q=80&w=800' }],
+    activities: [{ name: 'Tour Fluvial', icon: 'Waves' }],
+    accommodations: [], restaurants: [], events: [], visitorInfo: ''
+  },
+  {
+    id: 'salama',
+    name: 'Salamá',
+    slogan: 'Valles del Sol',
+    color: '#eab308',
+    cardImage: 'https://images.unsplash.com/photo-1473448912268-2022ce9509d8?auto=format&fit=crop&q=80&w=800',
+    heroImage: 'https://images.unsplash.com/photo-1473448912268-2022ce9509d8?auto=format&fit=crop&q=80&w=1200',
+    mapPos: { x: 28, y: 60 },
+    description: 'Salamá es un valle cálido donde el sol parece brillar con más fuerza. Sus tierras son ricas en cítricos y otros frutales, llenando el aire con aromas dulces durante la época de cosecha.',
+    attractions: [{ id: 'sl1', name: 'Huertos de Naranjales', description: 'Extensas plantaciones que se tornan color naranja en temporada.', imageUrl: 'https://images.unsplash.com/photo-1495107334309-fcf20504fa5f?auto=format&fit=crop&q=80&w=800' }],
+    activities: [{ name: 'Visita a Huertos', icon: 'Sprout' }],
+    accommodations: [], restaurants: [], events: [], visitorInfo: ''
+  },
+  {
+    id: 'san-esteban',
+    name: 'San Esteban',
+    slogan: 'Oro Verde',
+    color: '#facc15',
+    cardImage: 'https://images.unsplash.com/photo-1464822759023-fed622ff2c3b?auto=format&fit=crop&q=80&w=800',
+    heroImage: 'https://images.unsplash.com/photo-1464822759023-fed622ff2c3b?auto=format&fit=crop&q=80&w=1200',
+    mapPos: { x: 65, y: 25 },
+    description: 'San Esteban es famoso por su producción láctea y ganadera de altísimo nivel. Su "oro verde" son las pasturas que alimentan a los mejores ejemplares bovinos de la región, ganadores de múltiples certámenes nacionales.',
+    attractions: [{ id: 'se1', name: 'Planta de Lácteos', description: 'Vea cómo se produce el auténtico queso olanchano con estándares modernos.', imageUrl: 'https://images.unsplash.com/photo-1555507036-ab1f4038808a?auto=format&fit=crop&q=80&w=800' }],
+    activities: [{ name: 'Gira Tecnológica', icon: 'CheckCircle' }],
+    accommodations: [], restaurants: [], events: [], visitorInfo: ''
+  },
+  {
+    id: 'san-francisco-becerra',
+    name: 'San Francisco de Becerra',
+    slogan: 'Sabor Criollo',
+    color: '#14b8a6',
+    cardImage: 'https://images.unsplash.com/photo-1506744038136-46273834b3fb?auto=format&fit=crop&q=80&w=800',
+    heroImage: 'https://images.unsplash.com/photo-1506744038136-46273834b3fb?auto=format&fit=crop&q=80&w=1200',
+    mapPos: { x: 50, y: 72 },
+    description: 'Ubicado a pocos minutos de Juticalpa, Becerra es el escape gastronómico de la capital. Sus comedores son famosos por servir las mejores cuajadas y tortillas de maíz recién salidas del comal.',
+    attractions: [{ id: 'sf1', name: 'Río Boquerón', description: 'Balneario natural muy popular entre los locales los fines de semana.', imageUrl: 'https://images.unsplash.com/photo-1437482012494-097970ba3900?auto=format&fit=crop&q=80&w=800' }],
+    activities: [{ name: 'Balneario', icon: 'Waves' }],
+    accommodations: [], restaurants: [], events: [], visitorInfo: ''
+  },
+  {
+    id: 'san-francisco-paz',
+    name: 'San Francisco de La Paz',
+    slogan: 'Armonía y Valles',
+    color: '#06b6d4',
+    cardImage: 'https://images.unsplash.com/photo-1433838552652-f9a46b332c40?auto=format&fit=crop&q=80&w=800',
+    heroImage: 'https://images.unsplash.com/photo-1433838552652-f9a46b332c40?auto=format&fit=crop&q=80&w=1200',
+    mapPos: { x: 42, y: 52 },
+    description: 'Este municipio destaca por su orden y limpieza. Situado estratégicamente en la ruta hacia el norte, ofrece servicios de calidad y una atmósfera de paz que hace honor a su nombre.',
+    attractions: [{ id: 'sp1', name: 'Parque de la Paz', description: 'Uno de los parques mejor cuidados y con mayor iluminación nocturna.', imageUrl: 'https://images.unsplash.com/photo-1548625361-1250003b1458?auto=format&fit=crop&q=80&w=800' }],
+    activities: [{ name: 'Turismo de Paso', icon: 'Compass' }],
+    accommodations: [], restaurants: [], events: [], visitorInfo: ''
+  },
+  {
+    id: 'silca',
+    name: 'Silca',
+    slogan: 'Secretos de Olancho',
+    color: '#10b981',
+    cardImage: 'https://images.unsplash.com/photo-1441974231531-c6227db76b6e?auto=format&fit=crop&q=80&w=800',
+    heroImage: 'https://images.unsplash.com/photo-1441974231531-c6227db76b6e?auto=format&fit=crop&q=80&w=1200',
+    mapPos: { x: 38, y: 48 },
+    description: 'Silca es un municipio que guarda sus mejores paisajes para los más aventureros. Sus cerros verdes esconden cuevas y nacimientos de agua que solo los guías locales conocen a la perfección.',
+    attractions: [{ id: 'si1', name: 'Cerro La Peña', description: 'Formación rocosa ideal para escalada básica y observación.', imageUrl: 'https://images.unsplash.com/photo-1464822759023-fed622ff2c3b?auto=format&fit=crop&q=80&w=800' }],
+    activities: [{ name: 'Ecoturismo', icon: 'Tree' }],
+    accommodations: [], restaurants: [], events: [], visitorInfo: ''
+  },
+  {
+    id: 'yocon',
+    name: 'Yocón',
+    slogan: 'Historia de Valles',
+    color: '#f43f5e',
+    cardImage: 'https://images.unsplash.com/photo-1470770841072-f978cf4d019e?auto=format&fit=crop&q=80&w=800',
+    heroImage: 'https://images.unsplash.com/photo-1470770841072-f978cf4d019e?auto=format&fit=crop&q=80&w=1200',
+    mapPos: { x: 20, y: 40 },
+    description: 'Yocón es un rincón de gran calidez humana en el occidente. Sus valles han sido históricamente productivos y sus habitantes mantienen vivas las leyendas y cuentos de camino de Olancho.',
+    attractions: [{ id: 'yo1', name: 'Plaza del Recuerdo', description: 'Sitio de reunión con bustos de personajes ilustres del pueblo.', imageUrl: 'https://images.unsplash.com/photo-1518998053574-53f1f61fdb50?auto=format&fit=crop&q=80&w=800' }],
+    activities: [{ name: 'Turismo Cultural', icon: 'Book' }],
+    accommodations: [], restaurants: [], events: [], visitorInfo: ''
+  }
+];
+
+// Added PRODUCTS constant to resolve the error in App.tsx
+export const PRODUCTS = [
+  {
+    id: 'p1',
+    name: 'Gorra "Orgullo Olanchano"',
+    price: 'L. 280.00',
+    image: 'https://images.unsplash.com/photo-1588850561407-ed78c282e89b?auto=format&fit=crop&q=80&w=800'
+  },
+  {
+    id: 'p2',
+    name: 'Camiseta "Aventura Olancho"',
+    price: 'L. 350.00',
+    image: 'https://images.unsplash.com/photo-1521572267360-ee0c2909d518?auto=format&fit=crop&q=80&w=800'
+  },
+  {
+    id: 'p3',
+    name: 'Café Premium de El Rosario',
+    price: 'L. 180.00',
+    image: 'https://images.unsplash.com/photo-1559056191-753a3ef48483?auto=format&fit=crop&q=80&w=800'
   }
 ];

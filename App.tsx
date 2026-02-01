@@ -5,34 +5,19 @@ import MunicipalityCard from './components/MunicipalityCard';
 import MunicipalityDetail from './components/MunicipalityDetail';
 import TripPlanner from './components/TripPlanner';
 import AIAssistant from './components/AIAssistant';
-import { MUNICIPALITIES } from './constants';
+import { MUNICIPALITIES, PRODUCTS } from './constants';
 import { Municipality } from './types';
 import HeroCarousel from "./components/HeroCarousel";
 
 import { 
   Mountain, Compass, MapPin, Search, Menu, X, Facebook, Instagram, Twitter, 
   Calendar, ChevronRight, Home, ArrowRight, Plane, Zap, Star, Users, 
-  Target, ShieldCheck, ShoppingBag, Tag, ExternalLink, Globe, LayoutGrid, Layers
+  Target, ShieldCheck, ShoppingBag, Tag, ExternalLink, Globe, LayoutGrid, Layers,
+  ChevronLeft, Eye
 } from 'lucide-react';
 
 // --- CONFIGURACIÓN DE TIPOS Y CONSTANTES ---
 type View = 'home' | 'municipalities' | 'activities' | 'trip-planner' | 'about' | 'shop';
-
-const REMAINING_NAMES = [
-  "Concordia", "El Rosario", "Esquipulas del Norte", "Gualaco", "Guata", 
-  "Guayape", "Guarizama", "Jano", "La Unión", "Mangulile", "Manto", 
-  "Patuca", "Salamá", "San Esteban", "San Francisco de Becerra", 
-  "San Francisco de La Paz", "Silca", "Yocón"
-];
-
-const PRODUCTS = [
-  { id: 1, name: 'Gorra Aventura Olancho', price: 'L 350', category: 'Accesorios', image: 'https://images.unsplash.com/photo-1588850561407-ed78c282e89b?q=80&w=800&auto=format&fit=crop' },
-  { id: 2, name: 'Camisa Explorador Dry-Fit', price: 'L 450', category: 'Ropa', image: 'https://images.unsplash.com/photo-1521572267360-ee0c2909d518?q=80&w=800&auto=format&fit=crop' },
-  { id: 3, name: 'Bote Térmico Inoxidable', price: 'L 650', category: 'Equipo', image: 'https://images.unsplash.com/photo-1602143307185-8444754505a4?q=80&w=800&auto=format&fit=crop' },
-  { id: 4, name: 'Hand Bag "Olancho Heritage"', price: 'L 850', category: 'Bolsos', image: 'https://images.unsplash.com/photo-1544816153-12ad5d7133a1?q=80&w=800&auto=format&fit=crop' },
-  { id: 5, name: 'Camiseta Algodón Orgánico', price: 'L 300', category: 'Ropa', image: 'https://images.unsplash.com/photo-1562157873-818bc0726f68?q=80&w=800&auto=format&fit=crop' },
-  { id: 6, name: 'Mochila de Aventura', price: 'L 1,200', category: 'Equipo', image: 'https://images.unsplash.com/photo-1553062407-98eeb64c6a62?q=80&w=800&auto=format&fit=crop' }
-];
 
 const App: React.FC = () => {
   const [currentView, setCurrentView] = useState<View>('home');
@@ -41,6 +26,7 @@ const App: React.FC = () => {
   const [scrolled, setScrolled] = useState(false);
   const [showAd, setShowAd] = useState(false);
   const [showFullscreenAd, setShowFullscreenAd] = useState(true);
+  const [showExplorer, setShowExplorer] = useState(false);
   const [activeSlide, setActiveSlide] = useState(0);
   const [searchTerm, setSearchTerm] = useState('');
   const footerRef = useRef<HTMLElement>(null);
@@ -54,6 +40,15 @@ const App: React.FC = () => {
     `${baseUrl}principal/04.jpeg`,
     `${baseUrl}principal/05.jpg`
   ];
+
+  // Separamos los 5 principales del resto
+  const mainMunicipalities = MUNICIPALITIES.slice(0, 5);
+  const remainingMunicipalities = MUNICIPALITIES.slice(5);
+
+  const filteredRemaining = remainingMunicipalities.filter(m => 
+    m.name.toLowerCase().includes(searchTerm.toLowerCase()) ||
+    m.slogan.toLowerCase().includes(searchTerm.toLowerCase())
+  );
 
   // --- LÓGICA DE SCROLL Y NAVEGACIÓN ---
   useEffect(() => {
@@ -84,9 +79,10 @@ const App: React.FC = () => {
   }, [currentView, carouselImages.length]);
 
   const handleMunicipalityClick = (id: string) => {
-    const found = MUNICIPALITIES.find(m => m.id === id);
+    const found = MUNICIPALITIES.find(m => m.id === id || m.name.toLowerCase() === id.toLowerCase());
     if (found) {
       setSelectedMunicipality(found);
+      setShowExplorer(false);
       window.scrollTo(0, 0);
     }
   };
@@ -95,15 +91,12 @@ const App: React.FC = () => {
     setCurrentView(view);
     setSelectedMunicipality(null);
     setIsMenuOpen(false);
+    setShowExplorer(false);
     window.scrollTo(0, 0);
   };
 
   const allEvents = MUNICIPALITIES.flatMap(m => 
     m.events.map(e => ({ ...e, municipalityName: m.name, muniId: m.id, color: m.color }))
-  );
-
-  const filteredRemaining = REMAINING_NAMES.filter(name => 
-    name.toLowerCase().includes(searchTerm.toLowerCase())
   );
 
   // --- COMPONENTES DE INTERFAZ ---
@@ -151,6 +144,67 @@ const App: React.FC = () => {
     </nav>
   );
 
+  const renderExplorer = () => {
+    if (!showExplorer) return null;
+    return (
+      <div className="fixed inset-0 z-[100] bg-slate-950 overflow-y-auto animate-fade-in custom-scrollbar">
+        <div className="sticky top-0 z-20 bg-slate-950/90 backdrop-blur-xl border-b border-white/5 p-6 flex justify-between items-center">
+          <div className="flex items-center gap-4">
+            <button onClick={() => setShowExplorer(false)} className="p-3 bg-white/5 hover:bg-white/10 rounded-full text-white transition-all"><ChevronLeft className="w-6 h-6" /></button>
+            <h2 className="text-2xl font-black text-white font-brand">Atlas de <span className="text-orange-500">Olancho</span></h2>
+          </div>
+          <div className="relative w-64 md:w-96">
+            <Search className="absolute left-6 top-1/2 -translate-y-1/2 text-slate-500 w-4 h-4" />
+            <input 
+              type="text" 
+              placeholder="Buscar entre los otros 18 municipios..." 
+              value={searchTerm}
+              onChange={(e) => setSearchTerm(e.target.value)}
+              className="w-full bg-white/5 border border-white/10 rounded-full py-3 pl-14 pr-6 text-white text-sm focus:outline-none focus:ring-2 focus:ring-orange-500 transition-all placeholder:text-slate-600"
+            />
+          </div>
+        </div>
+
+        <div className="max-w-7xl mx-auto px-6 py-20">
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-8">
+            {filteredRemaining.length > 0 ? filteredRemaining.map((m) => (
+              <div 
+                key={m.id}
+                onClick={() => handleMunicipalityClick(m.id)}
+                className="group relative h-96 rounded-[2.5rem] overflow-hidden cursor-pointer shadow-2xl border border-white/5 hover:border-orange-500/50 transition-all duration-500 hover:-translate-y-2"
+              >
+                <img 
+                  src={m.cardImage} 
+                  alt={m.name} 
+                  className="absolute inset-0 w-full h-full object-cover group-hover:scale-110 transition-transform duration-1000 opacity-70 group-hover:opacity-100" 
+                />
+                <div className="absolute inset-0 bg-gradient-to-t from-slate-950 via-slate-950/20 to-transparent"></div>
+                <div className="absolute bottom-0 left-0 p-8 w-full">
+                  <div 
+                    className="w-8 h-1 bg-orange-500 mb-4 rounded-full group-hover:w-20 transition-all duration-500"
+                    style={{ backgroundColor: m.color }}
+                  ></div>
+                  <h3 className="text-3xl font-black text-white mb-2 font-brand">{m.name}</h3>
+                  <p className="text-orange-100/60 text-[10px] font-black uppercase tracking-[0.2em] mb-4 group-hover:text-orange-400 transition-colors">
+                    {m.slogan}
+                  </p>
+                  <div className="flex items-center gap-2 text-white font-bold text-[10px] uppercase tracking-widest opacity-0 group-hover:opacity-100 transform translate-y-4 group-hover:translate-y-0 transition-all duration-500">
+                    Descubrir <ArrowRight className="w-4 h-4 group-hover:translate-x-2 transition-transform" />
+                  </div>
+                </div>
+              </div>
+            )) : (
+              <div className="col-span-full py-20 text-center">
+                <Layers className="w-16 h-16 text-slate-700 mx-auto mb-6 opacity-20" />
+                <p className="text-slate-500 font-bold uppercase tracking-widest text-sm">No se encontraron municipios para "{searchTerm}"</p>
+              </div>
+            )}
+          </div>
+        </div>
+      </div>
+    );
+  };
+
   const renderFooter = () => (
     <footer ref={footerRef} className="bg-slate-900 text-white pt-20 pb-10 relative z-50">
       <div className="max-w-7xl mx-auto px-6 grid grid-cols-1 md:grid-cols-4 gap-12 mb-16">
@@ -166,7 +220,7 @@ const App: React.FC = () => {
         <div>
           <h4 className="font-bold text-lg mb-6">Municipios</h4>
           <ul className="space-y-1 text-slate-400">
-            {MUNICIPALITIES.slice(0, 5).map(m => (
+            {mainMunicipalities.map(m => (
               <li key={m.id}><button onClick={() => handleMunicipalityClick(m.id)} className="hover:text-white transition-colors">{m.name}</button></li>
             ))}
           </ul>
@@ -238,6 +292,7 @@ const App: React.FC = () => {
   return (
     <div className={`min-h-screen bg-slate-50 selection:bg-orange-200 overflow-x-hidden ${showFullscreenAd ? 'h-screen overflow-hidden' : ''}`}>
       {renderFullscreenAd()}
+      {renderExplorer()}
       {renderNavbar()}
 
       {/* PUBLICIDAD VERTICAL FIJA */}
@@ -308,80 +363,26 @@ const App: React.FC = () => {
               </div>
               
               <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-10 mb-32">
-                {MUNICIPALITIES.map(m => (
+                {/* Mostramos solo los 5 principales */}
+                {mainMunicipalities.map(m => (
                   <MunicipalityCard key={m.id} municipality={m} onClick={handleMunicipalityClick} />
                 ))}
-              </div>
 
-              {/* ATLAS DE OLANCHO: SECCIÓN VER MÁS */}
-              <div className="relative bg-slate-900 rounded-[4rem] p-12 md:p-20 overflow-hidden shadow-3xl">
-                {/* Background Decorations */}
-                <div className="absolute top-0 right-0 w-96 h-96 bg-orange-500/10 blur-[100px] rounded-full"></div>
-                <div className="absolute bottom-0 left-0 w-96 h-96 bg-green-500/10 blur-[100px] rounded-full"></div>
-                
-                <div className="relative z-10">
-                  <div className="flex flex-col lg:flex-row justify-between items-end gap-10 mb-16">
-                    <div className="max-w-2xl">
-                      <div className="flex items-center gap-3 mb-6">
-                        <Globe className="w-8 h-8 text-orange-500 animate-pulse" />
-                        <span className="text-orange-400 font-black uppercase tracking-[0.4em] text-xs">Directorio Completo</span>
-                      </div>
-                      <h2 className="text-4xl md:text-6xl font-black text-white font-brand mb-6 leading-tight">Descubre <span className="text-orange-500">Olancho</span></h2>
-                      <p className="text-slate-400 text-lg leading-relaxed">Más allá de las ciudades principales, el departamento esconde municipios llenos de misticismo, naturaleza virgen y leyendas ancestrales. Encuentra tu próxima aventura en nuestro buscador interactivo.</p>
+                {/* TARJETA ESPECIAL PARA VER EL RESTO (Ocultos inicialmente) */}
+                <div 
+                  onClick={() => setShowExplorer(true)}
+                  className="group relative h-80 rounded-2xl cursor-pointer shadow-xl overflow-hidden bg-slate-900 border-4 border-slate-900 transition-all duration-500 hover:scale-[1.02]"
+                >
+                  <div className="absolute inset-0 bg-gradient-to-br from-orange-500 via-orange-600 to-red-600 opacity-80 group-hover:opacity-100 transition-opacity"></div>
+                  <div className="absolute inset-0 flex flex-col items-center justify-center p-8 text-center text-white">
+                    <div className="w-20 h-20 rounded-full bg-white/10 backdrop-blur-md flex items-center justify-center mb-6 border border-white/20 group-hover:scale-110 transition-all">
+                      <Layers className="w-10 h-10 text-white animate-pulse" />
                     </div>
-                    
-                    <div className="w-full lg:w-96">
-                      <div className="relative group">
-                        <Search className="absolute left-6 top-1/2 -translate-y-1/2 text-slate-500 group-focus-within:text-orange-500 transition-colors" />
-                        <input 
-                          type="text"
-                          placeholder="Buscar municipio..."
-                          value={searchTerm}
-                          onChange={(e) => setSearchTerm(e.target.value)}
-                          className="w-full bg-white/5 border border-white/10 text-white rounded-3xl py-5 pl-16 pr-6 focus:outline-none focus:ring-4 focus:ring-orange-500/20 backdrop-blur-xl transition-all placeholder:text-slate-600"
-                        />
-                      </div>
+                    <h3 className="text-3xl font-black mb-2 font-brand tracking-tight">Ver Más Municipios</h3>
+                    <p className="text-orange-100 text-sm font-medium mb-6 opacity-80 uppercase tracking-widest">Explora los otros 18 municipios</p>
+                    <div className="flex items-center gap-2 bg-white text-slate-900 px-6 py-2.5 rounded-full font-black text-[10px] uppercase tracking-[0.2em] shadow-lg">
+                      Ver Todos <Eye className="w-4 h-4" />
                     </div>
-                  </div>
-
-                  <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 xl:grid-cols-6 gap-6">
-                    {filteredRemaining.length > 0 ? filteredRemaining.map((name, idx) => (
-                      <div 
-                        key={idx}
-                        className="group relative bg-white/5 hover:bg-white/10 border border-white/10 hover:border-orange-500/50 rounded-3xl p-6 transition-all duration-500 cursor-pointer backdrop-blur-md overflow-hidden"
-                      >
-                        <div className="absolute top-0 left-0 w-full h-1 bg-gradient-to-r from-transparent via-orange-500 to-transparent opacity-0 group-hover:opacity-100 transition-opacity"></div>
-                        <div className="w-12 h-12 rounded-2xl bg-slate-800 flex items-center justify-center text-white mb-4 group-hover:scale-110 group-hover:bg-orange-500 transition-all duration-500">
-                          <MapPin className="w-6 h-6" />
-                        </div>
-                        <h4 className="text-white font-bold text-sm tracking-wide mb-2 group-hover:text-orange-400 transition-colors">{name}</h4>
-                        <div className="flex items-center gap-2 text-[10px] font-black uppercase tracking-widest text-slate-500 opacity-0 group-hover:opacity-100 translate-y-2 group-hover:translate-y-0 transition-all duration-500">
-                          Descubrir <ArrowRight className="w-3 h-3" />
-                        </div>
-                        
-                        {/* Glass Decorative Element */}
-                        <div className="absolute -bottom-4 -right-4 w-16 h-16 bg-white/5 rounded-full blur-xl group-hover:bg-orange-500/20 transition-all"></div>
-                      </div>
-                    )) : (
-                      <div className="col-span-full py-20 text-center">
-                        <Layers className="w-16 h-16 text-slate-700 mx-auto mb-6 opacity-20" />
-                        <p className="text-slate-500 font-bold uppercase tracking-widest text-sm">No se encontraron municipios con ese nombre</p>
-                      </div>
-                    )}
-                  </div>
-
-                  <div className="mt-20 pt-10 border-t border-white/5 flex flex-col md:flex-row justify-between items-center gap-8">
-                    <div className="flex items-center gap-6">
-                      <div className="flex -space-x-4">
-                        {[1, 2, 3, 4].map(i => (
-                          <div key={i} className="w-12 h-12 rounded-full border-4 border-slate-900 bg-slate-800 flex items-center justify-center">
-                            <Users className="w-5 h-5 text-slate-500" />
-                          </div>
-                        ))}
-                      </div>
-           
-                    </div>
-                  
                   </div>
                 </div>
               </div>
@@ -428,7 +429,6 @@ const App: React.FC = () => {
                       <div className="flex items-center justify-between mt-6">
                         <span className="text-2xl font-black text-orange-500">{product.price}</span>
                         <button className="bg-slate-900 text-white p-4 rounded-2xl hover:bg-orange-500 transition-colors">
-                          {/* Corrected icon name from Shopping_Bag to ShoppingBag */}
                           <ShoppingBag className="w-5 h-5" />
                         </button>
                       </div>
@@ -545,6 +545,10 @@ const App: React.FC = () => {
         .shadow-3xl {
           box-shadow: 0 50px 100px -20px rgba(0, 0, 0, 0.5);
         }
+        .custom-scrollbar::-webkit-scrollbar { width: 8px; }
+        .custom-scrollbar::-webkit-scrollbar-track { background: #020617; }
+        .custom-scrollbar::-webkit-scrollbar-thumb { background: #1e293b; border-radius: 4px; }
+        .custom-scrollbar::-webkit-scrollbar-thumb:hover { background: #334155; }
       `}</style>
     </div>
   );
