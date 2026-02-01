@@ -151,7 +151,7 @@ const App: React.FC = () => {
         <div className="sticky top-0 z-20 bg-slate-950/90 backdrop-blur-xl border-b border-white/5 p-6 flex justify-between items-center">
           <div className="flex items-center gap-4">
             <button onClick={() => setShowExplorer(false)} className="p-3 bg-white/5 hover:bg-white/10 rounded-full text-white transition-all"><ChevronLeft className="w-6 h-6" /></button>
-            <h2 className="text-2xl font-black text-white font-brand">Atlas de <span className="text-orange-500">Olancho</span></h2>
+            <h2 className="text-2xl font-black text-white font-brand">Municipios de <span className="text-orange-500">Olancho</span></h2>
           </div>
           <div className="relative w-64 md:w-96">
             <Search className="absolute left-6 top-1/2 -translate-y-1/2 text-slate-500 w-4 h-4" />
@@ -217,14 +217,7 @@ const App: React.FC = () => {
             <a href="#" className="w-10 h-10 rounded-full bg-slate-800 flex items-center justify-center hover:bg-orange-500 transition-colors"><Twitter className="w-5 h-5" /></a>
           </div>
         </div>
-        <div>
-          <h4 className="font-bold text-lg mb-6">Municipios</h4>
-          <ul className="space-y-1 text-slate-400">
-            {mainMunicipalities.map(m => (
-              <li key={m.id}><button onClick={() => handleMunicipalityClick(m.id)} className="hover:text-white transition-colors">{m.name}</button></li>
-            ))}
-          </ul>
-        </div>
+     
         <div>
           <h4 className="font-bold text-lg mb-6">Contacto</h4>
           <ul className="space-y-1 text-slate-400">
